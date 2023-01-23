@@ -1,0 +1,72 @@
+.bicker-header {
+  background: purple;
+  height: 100px;
+}
+
+.bicker-h1 {
+  text-align: center;
+  color: white;
+  line-height: 100px;
+  margin: 0;
+}
+
+.bicker-container {
+  /* display: flex */
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  background: grey;
+  width: 900px;
+  /* flex: 12 1 1; */
+}
+
+.bickering-container {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  background: yellow;
+  flex: 0 5 auto;
+  /* width: min-content; */
+}
+
+.homepage {
+  display: flex;
+  justify-content: space-around;
+  background: lightpink;
+  /* flex: 2 0; */
+}
+
+/* .bicker-column, .bicker-row,  */
+.bicker-column, .bicker-row,
+.bicker-title, .bicker-username, .bicker-replies, .bicker-date, .bicker-activity {
+  display: flex;
+  padding: 10px;
+  margin: 5px;
+  background: purple;
+  justify-content: left;
+}
+
+.bicker-column {
+
+}
+
+.bicker-row {
+  display: flex;
+  justify-content: space-around;
+  background: lightgreen;
+}
+
+.bicker-title {
+  flex: 1
+}
+
+.bicker-username {
+  flex: 0 1 auto;
+}
+
+.bicker-date {
+  flex: 0 1 auto;
+}

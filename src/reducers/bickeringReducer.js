@@ -12,7 +12,7 @@ const bickeringSlice = createSlice({
   }
 })
 
-export const { setBickering } = bickeringSlice.actions()
+export const { setBickering } = bickeringSlice.actions
 
 export const initializeBickering = () => {
   return async dispatch => {

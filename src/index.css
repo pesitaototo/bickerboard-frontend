@@ -10,16 +10,16 @@
   margin: 0;
 }
 
-.bicker-container {
+.Bicker-Table {
   /* display: flex */
   padding: 10px;
   margin: 10px;
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: nowrap;
   flex-direction: column;
   background: grey;
-  width: 900px;
-  /* flex: 12 1 1; */
+  width: max-content;
+  /* flex: 1 0 auto; */
 }
 
 .bickering-container {
@@ -34,39 +34,65 @@
 
 .homepage {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-around;
   background: lightpink;
   /* flex: 2 0; */
 }
 
 /* .bicker-column, .bicker-row,  */
-.bicker-column, .bicker-row,
+.Bicker-Table-Header, .Bicker-Table-Row, 
 .bicker-title, .bicker-username, .bicker-replies, .bicker-date, .bicker-activity {
   display: flex;
+  flex-wrap: wrap;
   padding: 10px;
   margin: 5px;
-  background: purple;
+  background: lightcyan;
   justify-content: left;
 }
 
 .bicker-column {
-
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-.bicker-row {
+.Bicker-Table-Data {
   display: flex;
+  flex-wrap: nowrap;
+  /* justify-content: start; */
+  background: lightcoral;
+  flex-direction: column;
+}
+
+.Bicker-Table-Row {
+  border-color: black;
+  border-radius: 50px;
+  display: flex;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
-  background: lightgreen;
+  flex: 0 1 auto;
 }
 
 .bicker-title {
-  flex: 1
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
 }
 
 .bicker-username {
   flex: 0 1 auto;
 }
 
+.bicker-replies {
+  display: flex;
+  flex: 0 2 auto;
+}
+
+.bicker-activity {
+
+}
+
 .bicker-date {
-  flex: 0 1 auto;
+  display: flex;
+  flex: 1 0 1;
 }

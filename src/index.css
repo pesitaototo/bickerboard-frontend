@@ -10,18 +10,6 @@
   margin: 0;
 }
 
-.Bicker-Table {
-  /* display: flex */
-  padding: 10px;
-  margin: 10px;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  background: grey;
-  width: max-content;
-  /* flex: 1 0 auto; */
-}
-
 .user-modal {
   display: flex;
   flex: 1;
@@ -33,34 +21,34 @@
   justify-content: flex-start;
 }
 
-.bickering-container {
-  padding: 5px;
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-  background: yellow;
-  /* flex: 0 2 1; */
-  /* width: min-content; */
-}
-
-.homepage {
+.homepage, .Bicker-Table {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
   /* background: lightpink; */
-  /* flex: 2 0; */
+  /* flex: 0 1 70em; */
 }
 
-/* .bicker-column, .bicker-row,  */
-.Bicker-Table-Header, .Bicker-Table-Row, .Bicker-Table-Data,
-.bicker-title, .bicker-username, .bicker-replies, .bicker-date, .bicker-activity {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
+.bickering-container {
+  padding: 5px;
   margin: 5px;
-  background: lightcyan;
-  justify-content: left;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: yellow;
+  /* flex: 0 1 auto; */
+  /* flex-shrink: 1 */
+  /* width: min-content; */
+}
+
+.Bicker-Table {
+  /* display: flex; */
+  display: flex;
+  width: 900px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* flex: 0 1 55em; */
 }
 
 .bicker-column {

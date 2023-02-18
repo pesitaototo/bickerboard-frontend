@@ -1,4 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Link } from "react-router-dom"
+import { showDate } from "../utils"
 
 const Bicker = ({ bicker }) => {
   if (!bicker) {
@@ -6,22 +8,34 @@ const Bicker = ({ bicker }) => {
   }
 
   return (
-    <div>
-      <h3>{bicker.title}</h3>
-      <TableContainer component={Paper}>
+    <div className="Bicker-Table">
+    <h2><Link to="/">Bickers</Link> / {bicker.title}</h2>
+      <TableContainer component={Paper} >
+        
         <Table sx={{ minHeight: 150 }}>
+          <colgroup>
+            <col width="20%" />
+            <col width="80%" />
+          </colgroup>
           <TableHead>
             <TableRow>
-              <TableCell>Posted by</TableCell>
-              <TableCell align="center">Content</TableCell>
-              <TableCell align="right">Date</TableCell>
+              <TableCell>User</TableCell>
+              <TableCell align="left"><b>Topic: {bicker.title}</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{bicker.user.username}</TableCell>
+              <TableCell style={{verticalAlign: 'top'}}>
+                <div>
+                  {bicker.user.username}
+                </div>
+                <br/>
+                <br/>
+                <div>
+                  Posted {showDate(bicker.date)}
+                </div>
+              </TableCell>
               <TableCell>{bicker.content}</TableCell>
-              <TableCell align="right">{bicker.date}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

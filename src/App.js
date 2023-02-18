@@ -15,6 +15,7 @@ import Bicker from './components/Bicker';
 import LoginForm from './components/LoginForm';
 import UserModal from './components/UserModal';
 import Navigation from './components/Navigation';
+import NewBickerForm from './components/NewBickerForm';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -36,18 +37,19 @@ const App = () => {
     <div>
     <Header />
     <Navigation />
+    <div className="homepage">
     <Routes>
       <Route path='/' element={
         <>
-          <div className="homepage">
           <BickerList/>
-          <BickeringList/>
-          </div>
         </>
       }/>
       <Route path="/login" element={<LoginForm />} />
+      <Route path="/new-bicker" element={<NewBickerForm />} />
       <Route path="/bickers/:id" element={<Bicker bicker={bicker} />} />
     </Routes>
+    <BickeringList/>
+    </div>
     </div>
   )
 }

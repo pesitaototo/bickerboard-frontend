@@ -13,7 +13,7 @@ const Bickering = ({ bickering }) => {
 
 const BickeringList = () => {
   const bickerings = useSelector(state => state.bickerings)
-  
+
   return (
     <div className="bickering-container">
       <h2>Recent Bickerings</h2>

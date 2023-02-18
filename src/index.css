@@ -22,26 +22,38 @@
   /* flex: 1 0 auto; */
 }
 
+.user-modal {
+  display: flex;
+  flex: 1;
+}
+
+.navigation-bar {
+  display: flex;
+  /* background: red; */
+  justify-content: flex-start;
+}
+
 .bickering-container {
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   background: yellow;
-  flex: 0 5 auto;
+  /* flex: 0 2 1; */
   /* width: min-content; */
 }
 
 .homepage {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  background: lightpink;
+  justify-content: center;
+  align-items: flex-start;
+  /* background: lightpink; */
   /* flex: 2 0; */
 }
 
 /* .bicker-column, .bicker-row,  */
-.Bicker-Table-Header, .Bicker-Table-Row, 
+.Bicker-Table-Header, .Bicker-Table-Row, .Bicker-Table-Data,
 .bicker-title, .bicker-username, .bicker-replies, .bicker-date, .bicker-activity {
   display: flex;
   flex-wrap: wrap;
@@ -56,13 +68,12 @@
   flex-wrap: nowrap;
 }
 
-.Bicker-Table-Data {
+/* .Bicker-Table-Data {
   display: flex;
   flex-wrap: nowrap;
-  /* justify-content: start; */
   background: lightcoral;
   flex-direction: column;
-}
+} */
 
 .Bicker-Table-Row {
   border-color: black;

@@ -1,27 +1,23 @@
 import { useDispatch, useSelector } from "react-redux"
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Link } from "react-router-dom"
 
 const Bicker = ({ bicker, recentBicker }) => {
 
   return (
-    <div className="Bicker-Table-Row">
-      <p className="bicker-title">
-      {bicker.title}
-      </p>
-      <p className="bicker-username">
-        {bicker.user.username}
-      </p>
-      <p className="bicker-replies">
-        {bicker.bickerings.length}
-      </p>
-      <p className="bicker-date">
-        {bicker.date.toLocaleString()}
-      </p>
-      <p className="bicker-activity">
+    <TableRow>
+      <TableCell align="center">
+        <Link to={`bickers/${bicker.id}`}>{bicker.title}</Link>
+      </TableCell>
+      <TableCell align="center">{bicker.user.username}</TableCell>
+      <TableCell align="center">{bicker.bickerings.length}</TableCell>
+      <TableCell align="center">{bicker.date.toLocaleString()}</TableCell>
+      <TableCell align="center">
         { recentBicker
           ? 'recent post by ' + recentBicker.user.username + ' on ' + recentBicker.date
           : 'no replies'}
-      </p>
-    </div>
+      </TableCell>
+    </TableRow>
   )
 }
 
@@ -29,24 +25,30 @@ const BickerList = () => {
   const bickers = useSelector(state => state.bickers)
 
   return (
-    <div className="Bicker-Table">
+    <div>
       <h1>Bickers</h1>
-      <header className="Bicker-Table-Header">
-        <b className="bicker-title">Title</b>
-        <b className="bicker-username">Username</b>
-        <b className="bicker-replies">Replies</b>
-        <b className="bicker-date">Date</b>
-        <b className="bicker-activity">Last activity</b>
-      </header>
-      <div className="Bicker-Table-Data">
-        {bickers.map(bicker => 
-          <Bicker 
-            key={bicker.id}
-            bicker={bicker} 
-            recentBicker={bicker.bickerings[bicker.bickerings.length-1]}
-          />
-        )}
-      </div>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Title</TableCell>
+              <TableCell align="center">Username</TableCell>
+              <TableCell align="center">Replies</TableCell>
+              <TableCell align="center">Date</TableCell>
+              <TableCell align="center">Last activity</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+              {bickers.map(bicker => 
+                <Bicker 
+                  key={bicker.id}
+                  bicker={bicker} 
+                  recentBicker={bicker.bickerings[bicker.bickerings.length-1]}
+                />
+              )}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   )
 }

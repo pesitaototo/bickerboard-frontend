@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import { Link } from "react-router-dom"
-import NewBickerForm from "./NewBickerForm"
+import NewBickerForm from "./BickerForm"
 import { showDate } from "../utils"
 
 const Bicker = ({ bicker, recentBicker }) => {

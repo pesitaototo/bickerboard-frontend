@@ -1,6 +1,25 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from "@mui/material"
 import { Link } from "react-router-dom"
 import { showDate } from "../utils"
+
+const Bickering = ({ bickering }) => {
+
+  return (
+    <TableRow>
+      <TableCell style={{verticalAlign: 'top'}}>
+        <div>
+          {bickering.user.username}
+        </div>
+        <br/>
+        <br/>
+        <div>
+          Posted {showDate(bickering.date)}
+        </div>
+      </TableCell>
+      <TableCell>{bickering.content}</TableCell>
+    </TableRow>
+  )
+}
 
 const Bicker = ({ bicker }) => {
   if (!bicker) {
@@ -36,6 +55,8 @@ const Bicker = ({ bicker }) => {
               </TableCell>
               <TableCell>{bicker.content}</TableCell>
             </TableRow>
+            {bicker.bickerings
+              .map(bickering => <Bickering key={bickering.id} bickering={bickering} />)}
           </TableBody>
         </Table>
       </TableContainer>

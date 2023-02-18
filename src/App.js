@@ -15,7 +15,7 @@ import Bicker from './components/Bicker';
 import LoginForm from './components/LoginForm';
 import UserModal from './components/UserModal';
 import Navigation from './components/Navigation';
-import NewBickerForm from './components/NewBickerForm';
+import NewBickerForm from './components/BickerForm';
 import { logoutUser } from './reducers/userReducer';
 import Logout from './components/Logout';
 

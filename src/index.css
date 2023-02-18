@@ -53,51 +53,12 @@
   display: flex;
   width: 900px;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   /* flex: 0 1 55em; */
 }
 
-.bicker-column {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-/* .Bicker-Table-Data {
-  display: flex;
-  flex-wrap: nowrap;
-  background: lightcoral;
-  flex-direction: column;
-} */
-
-.Bicker-Table-Row {
-  border-color: black;
-  border-radius: 50px;
-  display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: space-around;
-  flex: 0 1 auto;
-}
-
-.bicker-title {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-}
-
-.bicker-username {
-  flex: 0 1 auto;
-}
-
-.bicker-replies {
-  display: flex;
-  flex: 0 2 auto;
-}
-
-.bicker-activity {
-
-}
-
-.bicker-date {
-  display: flex;
-  flex: 1 0 1;
+.new-bicker {
+  width: 600px;
+  /* display: flex; */
+  /* flex-direction: column; */
 }

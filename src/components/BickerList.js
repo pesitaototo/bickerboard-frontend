@@ -27,7 +27,6 @@ const Bicker = ({ bicker, recentBicker }) => {
 const BickerList = () => {
   const bickers = useSelector(state => state.bickers)
   const user = useSelector(state => state.user)
-  console.log(user)
 
   return (
     <div className="Bicker-Table">

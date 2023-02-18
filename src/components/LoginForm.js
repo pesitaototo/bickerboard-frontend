@@ -1,6 +1,7 @@
 import { Button, FormControl, InputLabel, TextField } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { loginUser } from "../reducers/userReducer"
 
 const LoginForm = () => {
@@ -8,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('')
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const user = useSelector(state => state.user)
 
@@ -19,6 +21,12 @@ const LoginForm = () => {
     setUsername('')
     setPassword('')
   }
+
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  })
 
   return (
     <div>

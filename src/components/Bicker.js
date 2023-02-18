@@ -9,9 +9,8 @@ const Bicker = ({ bicker }) => {
 
   return (
     <div className="Bicker-Table">
-    <h2><Link to="/">Bickers</Link> / {bicker.title}</h2>
-      <TableContainer component={Paper} >
-        
+      <h2><Link to="/">Bickers</Link> / {bicker.title}</h2>
+      <TableContainer component={Paper}>
         <Table sx={{ minHeight: 150 }}>
           <colgroup>
             <col width="20%" />

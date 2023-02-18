@@ -7,8 +7,10 @@ const userSlice = createSlice({
   initialState: null,
   reducers: {
     setUser(state, action) {
-      console.log("payload", action.payload)
-      return action.payload
+      return {
+        token: action.payload.token, 
+        username: action.payload.username
+      }
     },
     removeUser(_) {
       return null
@@ -25,7 +27,7 @@ export const loginUser = (username, password) => {
   }
   return async dispatch => {
     const userToken = await loginService.login(loginCredentials)
-    dispatch(setUser(userToken.token))
+    dispatch(setUser(userToken))
   }
 }
 

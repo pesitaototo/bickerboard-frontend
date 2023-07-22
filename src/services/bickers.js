@@ -1,7 +1,7 @@
 import axios from 'axios'
 import authService from '../services/auth'
 
-const baseUrl = '/api/bickers'
+const baseUrl = 'http://localhost:3001/api/bickers'
 
 const getAll = async () => {
   const response = await axios.get(baseUrl)

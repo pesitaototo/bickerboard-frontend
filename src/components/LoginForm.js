@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { loginUser } from "../reducers/userReducer"
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('')
+  const [handle, setHandle] = useState('')
   const [password, setPassword] = useState('')
 
   const dispatch = useDispatch()
@@ -16,9 +16,9 @@ const LoginForm = () => {
   const handleLogin = (e) => {
     e.preventDefault()
 
-    dispatch(loginUser(username, password))
+    dispatch(loginUser(handle, password))
 
-    setUsername('')
+    setHandle('')
     setPassword('')
   }
 
@@ -34,9 +34,9 @@ const LoginForm = () => {
       <form onSubmit={handleLogin}>
         <div>
           <TextField
-            label="username"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
+            label="handle"
+            value={handle}
+            onChange={({ target }) => setHandle(target.value)}
           />
           <TextField
             label="password"

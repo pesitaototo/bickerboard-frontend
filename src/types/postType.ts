@@ -1,10 +1,10 @@
 
 
-interface TopicType {
+interface PostType {
   id: number;
-  title: string;
   body: string;
   userId: number;
+  topicId: number;
   user: {
     id: number;
     username: string;
@@ -18,4 +18,4 @@ interface TopicType {
   updatedAt: Date;
 }
 
-export default TopicType;
+export default PostType;

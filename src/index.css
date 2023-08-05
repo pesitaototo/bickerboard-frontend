@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.home-button {
+  display: inline;
+  float: left;
+}
+.login-button, .signup-button {
+  display: inline;
+  float: right;
+}
+
+a {
+  display: block;
+  padding: 8px;
+  background-color: #dddddd;
+}
+
+.app-container {
+  display: grid;
+  padding: 2%;
+}
+
+.topic-container, .login-container {
+  display: grid;
+  grid-template-rows: auto;
+  padding-top: 5%;
+  /* border: 2em solid white; */
+  /* max-width: fit-content(80em); */
+  grid-template-columns: minmax(100%, 20%);
+}
+
+.topic-header, .topic-data {
+/*   display: flex;
+  justify-content: center; */
+  display: grid;
+  background-color: orange;
+  grid-template-columns: 50% repeat(3, 1fr);
+  text-align: center;
+}
+
+.topic-data {
+  background-color: yellow;
+}
+
+.topic-last-post {
+  font-size: .8em;
+}
+
+.recent {
+  grid-column-start: 2;
+}

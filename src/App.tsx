@@ -13,12 +13,17 @@ import Root from './components/Root';
 import ErrorPage from './components/ErrorPage';
 import Signup from './components/Signup';
 import Topic from './components/Topic';
+import { initializePost } from './reducers/postReducer';
+import { initializeUser } from './reducers/userReducer';
+import User from './components/User';
 
 function App() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(initializeTopic())
+    dispatch(initializeTopic());
+    dispatch(initializePost());
+    dispatch(initializeUser());
   }, [dispatch])
 
   return (
@@ -29,6 +34,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/t/:title/:id" element={<Topic />} />
+          <Route path="/u/:username" element={<User />} />
         </Routes>
     </div>
   );

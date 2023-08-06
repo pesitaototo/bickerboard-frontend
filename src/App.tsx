@@ -29,6 +29,7 @@ function App() {
   return (
     <div className="app-container">
         <Root />
+        <div className="app-data-container">
         <Routes>
           <Route path="/" element={<TopicList />} />
           <Route path="/login" element={<Login />} />
@@ -36,6 +37,7 @@ function App() {
           <Route path="/t/:title/:id" element={<Topic />} />
           <Route path="/u/:username" element={<User />} />
         </Routes>
+        </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import PostType from "../types/postType";
 import { useAppSelector } from "../hooks";
+import { parseDate } from "../utils/common";
 
 interface PostProps {
   topicId: number;
@@ -11,16 +12,25 @@ interface RenderPostProps {
 }
 
 const RenderPost: FC<RenderPostProps> = ({ post }) => {
+  const dateString = parseDate(post.createdAt);
+  console.log(post.createdAt);
+  console.log(typeof post.createdAt);
 
   return (
     <div className="topic-post-data">
-      <div className="topic-post-header">
-        <div className="user">{post.user.username}</div>
-        <div className="date">{post.createdAt.toString()}</div>
+      <div>{post.id}</div>
+      <div>
+        <div className="topic-post-header">
+          <div className="user">{post.user.username}</div>
+          <div className="date">{dateString}</div>
+        </div>
+        <div className="topic-post-data-body">
+          {post.body}
+        </div>
       </div>
-      <div className="topic-post-data-body">
-        {post.body}
-      </div>
+      {/* <div className="topic-post-data-reply">
+        <button>Reply</button>
+      </div> */}
     </div>
   )
 }

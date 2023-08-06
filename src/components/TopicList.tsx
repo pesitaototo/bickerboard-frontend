@@ -3,17 +3,15 @@ import { useAppSelector } from "../hooks";
 import TopicType from "../types/topicType";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { parseDate } from "../utils/common";
 
 interface TopicProps {
   topic: TopicType;
 }
 
 const RenderTopic: FC<TopicProps> = ({topic}) => {
-  const unixTimpstamp = Date.parse(topic.createdAt.toString());
-  const date = new Date(unixTimpstamp * 1000);
-  const day = date.getDay();
-  const month = date.toLocaleString('default', { month: 'long' });
-  const year = date.getUTCFullYear();
+  const dateString = parseDate(topic.createdAt)
+  const numPosts = useAppSelector(state => state.posts.filter(p => p.topicId === topic.id)).length;
 
   const friendlyTitle = topic.title.toLowerCase().replace('/[^a-z0-9]/gi', '').replaceAll(' ', '-');
 
@@ -21,8 +19,8 @@ const RenderTopic: FC<TopicProps> = ({topic}) => {
     <div className="topic-data-container">
       <div className="topic-title"><Link className="topic-title" to={`/t/${friendlyTitle}/${topic.id}`}>{topic.title}</Link></div>
       <div className="topic-item"><Link to={`/u/${topic.user.username}`}>{topic.user.username}</Link></div>
-      <div className="topic-item">0</div>
-      <div className="topic-last-post">{month} {day}, {year}</div>
+      <div className="topic-item">{numPosts}</div>
+      <div className="topic-last-post">{dateString}</div>
     </div>
   );
 }

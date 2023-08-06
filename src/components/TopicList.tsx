@@ -18,8 +18,8 @@ const RenderTopic: FC<TopicProps> = ({topic}) => {
   const friendlyTitle = topic.title.toLowerCase().replace('/[^a-z0-9]/gi', '').replaceAll(' ', '-');
 
   return (
-    <div className="topic-data">
-      <div className="topic-item"><Link to={`/t/${friendlyTitle}/${topic.id}`}>{topic.title}</Link></div>
+    <div className="topic-data-container">
+      <div className="topic-title"><Link className="topic-title" to={`/t/${friendlyTitle}/${topic.id}`}>{topic.title}</Link></div>
       <div className="topic-item"><Link to={`/u/${topic.user.username}`}>{topic.user.username}</Link></div>
       <div className="topic-item">0</div>
       <div className="topic-last-post">{month} {day}, {year}</div>

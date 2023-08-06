@@ -3,6 +3,7 @@ import { useAppSelector } from "../hooks";
 import TopicType from "../types/topicType";
 // import { FC } from "react";
 import { useParams } from "react-router-dom";
+import PostList from "./PostList";
 
 // interface TopicProps {
 //   id: number;
@@ -25,11 +26,20 @@ const Topic = () => {
   const year = date.getUTCFullYear();
 
   return (
-    <div className="topic-data">
-      <div className="topic-item">{topic.title}</div>
-      <div className="topic-item">{topic.userId}</div>
-      <div className="topic-item">0</div>
-      <div className="topic-last-post">{month} {day}, {year}</div>
+    <div className="topic-container">
+      <div className="topic-title">
+        <h2>{topic.title}</h2>
+      </div>
+      <div className="topic-post-data">
+        <div className="topic-post-header">
+          <div className="user">{topic.user.username}</div>
+          <div className="date">{month} {day}, {year}</div>
+        </div>
+        <div className="topic-post-data-body">{topic.body}</div>
+      </div>
+      <div className="topic-post-container">
+        <PostList topicId={topic.id} />
+      </div>
     </div>
   );
 }

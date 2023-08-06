@@ -1,6 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../config";
-import UserType from "../types/userType";
+import UserType, { NewUserType } from "../types/userType";
 
 const userBaseUrl = baseUrl + '/api/users'
 
@@ -10,6 +10,12 @@ const getAll = async (): Promise<UserType[]> => {
   return response.data;
 }
 
+const signUp = async (userData: NewUserType) => {
+  const response = await axios.post(userBaseUrl, userData);
+
+  return response.data;
+}
+
 export default {
-  getAll,
+  getAll, signUp
 }

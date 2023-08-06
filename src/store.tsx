@@ -1,5 +1,7 @@
 import { Reducer, configureStore } from '@reduxjs/toolkit';
 import topicReducer from './reducers/topicReducer';
+import postReducer from './reducers/postReducer';
+import userReducer from './reducers/userReducer';
 
 // We export RootState and AppDispatch for correct type hints when referencing store.
 // https://redux-toolkit.js.org/tutorials/typescript#define-root-state-and-dispatch-types
@@ -9,6 +11,8 @@ export type AppDispatch = typeof store.dispatch
 const store = configureStore({
   reducer: {
     topics: topicReducer,
+    posts: postReducer,
+    users: userReducer,
   }
 });
 

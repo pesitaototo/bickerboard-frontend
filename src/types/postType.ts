@@ -1,3 +1,4 @@
+import UserType from "./userType";
 
 
 interface PostType {
@@ -5,15 +6,7 @@ interface PostType {
   body: string;
   userId: number;
   topicId: number;
-  user: {
-    id: number;
-    username: string;
-    email: string;
-    isAdmin: boolean;
-    isEnabled: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-  }
+  user: UserType;
   createdAt: Date;
   updatedAt: Date;
 }

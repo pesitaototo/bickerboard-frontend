@@ -1,7 +1,8 @@
-import { Dispatch, PayloadAction, createSlice } from "@reduxjs/toolkit"
-import TopicType from "../types/topicType"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import PostType from "../types/postType";
 import postService from "../services/postService";
+import { newNotification } from "./notificationReducer";
+import { AppDispatch } from "../store";
 
 const postSlice = createSlice({
   name: 'posts',
@@ -16,9 +17,14 @@ const postSlice = createSlice({
 export const { setPost } = postSlice.actions;
 
 export const initializePost = () => {
-  return async (dispatch: Dispatch) => {
-    const topics = await postService.getAll()
-    dispatch(setPost(topics))
+  return async (dispatch: AppDispatch) => {
+    try {
+      const topics = await postService.getAll()
+      dispatch(setPost(topics))
+    } catch (e) {
+      // console.log(e);
+      // dispatch(newNotification({type: 'error', content: e}))
+    }
   }
 }
 

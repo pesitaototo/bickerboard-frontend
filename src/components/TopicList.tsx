@@ -37,8 +37,7 @@ const TopicList = () => {
         <div className="topic-item">Activity</div>
       </div>
         {topics.map(topic =>
-            <RenderTopic key={topic.id} topic={topic}
-            />
+            <RenderTopic key={topic.id} topic={topic} />
         )}
     </div>
   );

@@ -16,6 +16,7 @@ import Topic from './components/Topic';
 import { initializePost } from './reducers/postReducer';
 import { initializeUser } from './reducers/userReducer';
 import User from './components/User';
+import { newNotification } from './reducers/notificationReducer';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -24,6 +25,7 @@ function App() {
     dispatch(initializeTopic());
     dispatch(initializePost());
     dispatch(initializeUser());
+    dispatch(newNotification({ type: 'message', content: '' }))
   }, [dispatch])
 
   return (

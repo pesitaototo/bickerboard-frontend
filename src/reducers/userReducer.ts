@@ -39,7 +39,7 @@ export const createUser = (newUser: NewUserType) => {
     } catch (e) {
       if (e instanceof AxiosError && e.response) {
         dispatch(newNotification({ type: 'error', content: e.response.data.error }))
-        console.log(e.response.data);
+        // console.log(e.response.data);
       }
     }
   }

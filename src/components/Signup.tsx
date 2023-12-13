@@ -1,9 +1,7 @@
 import { SyntheticEvent, useState } from "react";
-import userService from "../services/userService";
 import { useAppDispatch } from "../hooks";
 import { createUser } from "../reducers/userReducer";
 import { NewUserType } from "../types/userType";
-import { newNotification } from "../reducers/notificationReducer";
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -23,15 +21,7 @@ const Signup = () => {
       email
     }
 
-    console.log('going to try');
-    try {
-      dispatch(createUser(newUserObj));
-      dispatch(newNotification({ type: 'message', content: `created new user ${newUserObj.username}`}))
-    } catch (e) {
-      dispatch(newNotification({ type: 'error', content: 'error' }));
-      console.log('in catch');
-    }
-    console.log('out of try-c');
+    dispatch(createUser(newUserObj));
 
     setUsername('');
     setPassword('');

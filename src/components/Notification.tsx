@@ -13,7 +13,7 @@ const Notification = () => {
   }
 
   if (notification.content === '') return <></>
-  console.log(notification);
+  // console.log(notification);
 
   return (
     <div style={style} className={notification.type}>

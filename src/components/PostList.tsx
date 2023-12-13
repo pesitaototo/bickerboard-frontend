@@ -27,10 +27,10 @@ const RenderPost: FC<RenderPostProps> = ({ post }) => {
         <div className="topic-post-data-body">
           {post.body}
         </div>
+        <div className="topic-post-data-reply">
+          <button>Reply</button>
+        </div>
       </div>
-      {/* <div className="topic-post-data-reply">
-        <button>Reply</button>
-      </div> */}
     </div>
   )
 }

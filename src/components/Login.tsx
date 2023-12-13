@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
+import LoginType from "../types/loginType";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = (event: SyntheticEvent) => {
+    event.preventDefault();
+
+    const loginObj: LoginType = {
+      username,
+      password
+    }
+
+    setUsername('');
+    setPassword('');
+  }
+
   return (
     <div className="login-container">
       <h3>Login</h3>
-      <form>
+      <form onSubmit={handleLogin}>
         <input
           type="text"
           id="username"

@@ -1,5 +1,4 @@
 import { SyntheticEvent, useState } from "react";
-import userService from "../services/userService";
 import { useAppDispatch } from "../hooks";
 import { createUser } from "../reducers/userReducer";
 import { NewUserType } from "../types/userType";
@@ -10,6 +9,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
 
+  
   const dispatch = useAppDispatch();
 
   const handleSubmit = (event: SyntheticEvent) => {
@@ -38,6 +38,7 @@ const Signup = () => {
           id="username"
           name="username"
           onChange={({ target }) => { setUsername(target.value) }}
+          value={username}
         />
         username<br/>
         <input
@@ -45,12 +46,14 @@ const Signup = () => {
           id="email"
           name="email"
           onChange={({ target }) => { setEmail(target.value) }}
+          value={email}
         />email<br/>
         <input
           type="password"
           id="password"
           name="password"
           onChange={({ target }) => { setPassword(target.value) }}
+          value={password}
         />
         password<br/>
         <input
@@ -58,6 +61,7 @@ const Signup = () => {
           id="confirmpassword"
           name="confirmpassword"
           onChange={({ target }) => { setConfirmPassword(target.value) }}
+          value={confirmPassword}
         />
         confirm password
         <br/>

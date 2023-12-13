@@ -1,6 +1,9 @@
 import { Action, Dispatch, PayloadAction, createSlice } from "@reduxjs/toolkit"
 import TopicType from "../types/topicType"
 import topicService from "../services/topicService"
+import { AxiosError } from "axios"
+import { newNotification } from "./notificationReducer"
+import { AppDispatch } from "../store"
 
 const topicSlice = createSlice({
   name: 'topics',
@@ -18,9 +21,15 @@ const topicSlice = createSlice({
 export const { setTopic, addTopic } = topicSlice.actions
 
 export const initializeTopic = () => {
-  return async (dispatch: Dispatch) => {
-    const topics = await topicService.getAll()
-    dispatch(setTopic(topics))
+  return async (dispatch: AppDispatch) => {
+    try {
+      const topics = await topicService.getAll()
+      dispatch(setTopic(topics))
+    } catch (e) {
+      if (e instanceof AxiosError && e.message) {
+        dispatch(newNotification({ type: 'error', content: e.message }))
+      }
+    }
   }
 }
 

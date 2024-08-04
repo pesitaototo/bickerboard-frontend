@@ -36,6 +36,7 @@ export const createUser = (newUser: NewUserType) => {
     try {
       const createdUser: UserType = await userService.signUp(newUser);
       dispatch(addUser(createdUser));
+      dispatch(newNotification({ type: 'message', content: `${createdUser.username} was successfully created!`}))
     } catch (e) {
       if (e instanceof AxiosError && e.response) {
         dispatch(newNotification({ type: 'error', content: e.response.data.error }))

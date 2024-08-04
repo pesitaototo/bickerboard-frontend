@@ -15,6 +15,6 @@ interface UserType {
 
 export type NewUserType = Omit<UserType,'id' | 'isAdmin' | 'isEnabled' 
   | 'posts' | 'topics' | 'createdAt' | 'updatedAt'>
-  & { password: string }
+  & { password: string, passwordConfirm: string }
 
 export default UserType;

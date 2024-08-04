@@ -1,12 +1,12 @@
 import { SyntheticEvent, useState } from "react";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { createUser } from "../reducers/userReducer";
 import { NewUserType } from "../types/userType";
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordConfirm, setpasswordConfirm] = useState('');
   const [email, setEmail] = useState('');
 
   
@@ -18,15 +18,23 @@ const Signup = () => {
     const newUserObj: NewUserType = {
       username,
       password,
+      passwordConfirm,
       email
     }
 
     dispatch(createUser(newUserObj));
+    if (useAppSelector(state => state.users.find(user => user.username === newUserObj.username))) {
+      setUsername('');
+      setPassword('');
+      setpasswordConfirm('');
+      setEmail('');
+    }
 
     setUsername('');
     setPassword('');
-    setConfirmPassword('');
+    setpasswordConfirm('');
     setEmail('');
+    
   }
 
   return (
@@ -58,10 +66,10 @@ const Signup = () => {
         password<br/>
         <input
           type="password"
-          id="confirmpassword"
-          name="confirmpassword"
-          onChange={({ target }) => { setConfirmPassword(target.value) }}
-          value={confirmPassword}
+          id="passwordConfirm"
+          name="passwordConfirm"
+          onChange={({ target }) => { setpasswordConfirm(target.value) }}
+          value={passwordConfirm}
         />
         confirm password
         <br/>

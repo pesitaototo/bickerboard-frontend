@@ -2,12 +2,15 @@ import { SyntheticEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { createUser } from "../reducers/userReducer";
 import { NewUserType } from "../types/userType";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setpasswordConfirm] = useState('');
   const [email, setEmail] = useState('');
+
+  const navigate = useNavigate();
 
   
   const dispatch = useAppDispatch();
@@ -22,13 +25,15 @@ const Signup = () => {
       email
     }
 
-    dispatch(createUser(newUserObj));
-    if (useAppSelector(state => state.users.find(user => user.username === newUserObj.username))) {
-      setUsername('');
-      setPassword('');
-      setpasswordConfirm('');
-      setEmail('');
-    }
+    dispatch(createUser(newUserObj, navigate));
+    // if (useAppSelector(state => state.users.find(user => user.username === newUserObj.username))) {
+    //   setUsername('');
+    //   setPassword('');
+    //   setpasswordConfirm('');
+    //   setEmail('');
+      
+
+    // }
 
     setUsername('');
     setPassword('');

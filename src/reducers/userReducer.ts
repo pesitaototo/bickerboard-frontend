@@ -4,13 +4,13 @@ import userService from "../services/userService";
 import { AxiosError } from "axios";
 import { newNotification } from "./notificationReducer";
 import { AppDispatch } from "../store";
-import { HistoryRouterProps, Navigation } from "react-router-dom";
+import { NavigateFunction, Navigation } from "react-router-dom";
 
 const userSlice = createSlice({
   name: 'users',
   initialState: [] as UserType[],
   reducers: {
-    setUser(state, action: PayloadAction<UserType[]>) {
+    setUsers(state, action: PayloadAction<UserType[]>) {
       return action.payload;
     },
     addUser(state, action) {
@@ -19,26 +19,27 @@ const userSlice = createSlice({
   }
 })
 
-export const { setUser, addUser } = userSlice.actions;
+export const { setUsers, addUser } = userSlice.actions;
 
 export const initializeUser = () => {
   return async (dispatch: Dispatch) => {
     try {
-      const topics = await userService.getAll();
-      dispatch(setUser(topics));
+      const users = await userService.getAll();
+      dispatch(setUsers(users));
     } catch (e) {
       //
     }
   }
 }
 
-export const createUser = (newUser: NewUserType, nav: any) => {
+// asynchronous thunk action creator
+export const createUser = (newUser: NewUserType, navigate: NavigateFunction) => {
   return async (dispatch: AppDispatch) => {
     try {
       const createdUser: UserType = await userService.signUp(newUser);
       dispatch(addUser(createdUser));
       dispatch(newNotification({ type: 'message', content: `${createdUser.username} was successfully created!`}))
-      nav('/');
+      navigate('/');
     } catch (e) {
       if (e instanceof AxiosError && e.response) {
         dispatch(newNotification({ type: 'error', content: e.response.data.error }))

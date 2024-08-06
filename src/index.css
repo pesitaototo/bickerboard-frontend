@@ -119,3 +119,14 @@ a {
 .recent {
   grid-column-start: 2;
 }
+
+.primary-nav {
+  display:flex;
+  list-style-type: none;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.left-nav {
+  margin-right: auto;
+}

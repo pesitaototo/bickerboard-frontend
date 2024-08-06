@@ -23,9 +23,11 @@ const Topic = () => {
   const dateString = parseDate(topic.createdAt);
 
   return (
+
     <div className="topic-container">
+      <div className="topic-title">Topic</div>
       <div className="topic-title">
-        <h2>{topic.title}</h2>
+        <h3>{topic.title}</h3>
       </div>
       <div className="topic-post-data">
         <div>1</div>

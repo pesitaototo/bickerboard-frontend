@@ -14,17 +14,13 @@ const Root = () => {
       <Notification />
       <div>
         <nav>
-          <ul>
-            <li className="home-button">
-              <Link to={`/`}>Home</Link>
-            </li>
-            <li className="login-button">
-              <Link to={`/login`}>Login</Link>
-            </li>
-            <li className="signup-button">
-              <Link to={`/signup`}>Sign up</Link>
-            </li>
-          </ul>
+          <div className="primary-nav">
+            <Link to={`/login`}>Login</Link>
+            <Link to={`/signup`}>Sign up</Link>
+          </div>
+          <div className="left-nav">
+            <Link to={`/`}>Home</Link>
+          </div>
         </nav>
       </div>
     </div>

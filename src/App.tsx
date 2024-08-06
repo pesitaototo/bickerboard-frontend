@@ -4,7 +4,7 @@ import {
   Routes
 } from 'react-router-dom';
 import TopicList from './components/TopicList';
-import { useEffect } from 'react';
+import { ErrorInfo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initializeTopic } from './reducers/topicReducer';
 import { useAppDispatch } from './hooks';
@@ -17,6 +17,7 @@ import { initializePost } from './reducers/postReducer';
 import { initializeUser } from './reducers/userReducer';
 import User from './components/User';
 import { newNotification } from './reducers/notificationReducer';
+import { setToken } from './reducers/authReducer';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -27,6 +28,20 @@ function App() {
     dispatch(initializeUser());
     dispatch(newNotification({ type: 'message', content: '' }))
   }, [dispatch])
+
+  useEffect(() => {
+    try {
+      const loggedUserJSON = window.localStorage.getItem('loggedBickerUser');
+      if (loggedUserJSON) {
+        // console.log(loggedUserJSON)
+        const userToken = JSON.parse(loggedUserJSON);
+        
+        dispatch(setToken(userToken.token))
+      }
+    } catch (error) { 
+      dispatch(newNotification({ type: 'error', content: 'login expired, please login again' }))
+    }
+  }, [])
 
   return (
     <div className="app-container">

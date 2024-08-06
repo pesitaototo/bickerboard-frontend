@@ -5,6 +5,7 @@ import { AppDispatch } from "../store";
 import { AxiosError } from "axios";
 import { newNotification } from "./notificationReducer";
 import { NavigateFunction } from "react-router-dom";
+import { CLIENT_RENEG_LIMIT } from "tls";
 
 
 interface AuthState {
@@ -48,14 +49,17 @@ export const { setToken, setUser, loginSuccess, loginFailure } = authSlice.actio
 export const authSignIn = (username: string, password: string, navigate: NavigateFunction) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await authService.authUser(username, password);
+      const response = await authService.signIn(username, password);
       dispatch(newNotification({ type: 'message', content: `${username} logged in successfully!`}));
 
       dispatch(loginSuccess);
-      dispatch(setToken(response.data));
+      dispatch(setToken(response.token));
+      console.log(response.token);
+      
+      window.localStorage.removeItem('loggedBickerUser');
 
       window.localStorage.setItem(
-        ''
+        'loggedBickerUser', JSON.stringify(response.token)
       )
 
       navigate('/');

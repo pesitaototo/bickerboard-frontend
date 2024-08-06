@@ -1,9 +1,15 @@
 import { SyntheticEvent, useState } from "react";
 import LoginType from "../types/loginType";
+import { useAppDispatch } from "../hooks";
+import { authSignIn } from "../reducers/authReducer";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogin = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -12,6 +18,8 @@ const Login = () => {
       username,
       password
     }
+
+    dispatch(authSignIn(username, password, navigate));
 
     setUsername('');
     setPassword('');

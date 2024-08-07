@@ -3,6 +3,10 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { useEffect } from "react";
 import Notification from "./Notification";
 
+const PrimaryNav = () => {
+  
+}
+
 const Root = () => {
   // useEffect(() => {
   //   dispatch(getErrorMessage());
@@ -14,6 +18,7 @@ const Root = () => {
       <Notification />
       <div>
         <nav>
+          {this}
           <div className="primary-nav">
             <Link to={`/login`}>Login</Link>
             <Link to={`/signup`}>Sign up</Link>
